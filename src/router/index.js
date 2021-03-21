@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import authStore from '@/store/auth'
 
 const routes = [
   {
@@ -10,7 +11,16 @@ const routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: () => import('../views/Dashboard.vue')
+    component: () => import('../views/Dashboard.vue'),
+    async beforeEnter(to, from, next) {
+      await authStore.dispatch('user')
+      if (authStore.state.authStatus) {
+        next()
+      }
+      next({
+        name: 'Home'
+      })
+    }
   },
   {
     path: '/login',
