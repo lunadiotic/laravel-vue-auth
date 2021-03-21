@@ -35,9 +35,7 @@
               >{{ user.name }}</a
             >
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="logout">Logout</a></li>
             </ul>
           </li>
         </ul>
@@ -58,13 +56,22 @@
 <script>
 import authStore from '@/store/auth'
 import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default {
   setup() {
+    const router = useRouter()
     const authStatus = computed(() => authStore.state.authStatus)
     const user = computed(() => authStore.state.user)
 
-    return { authStatus, user }
+    let logout = async () => {
+      await authStore.dispatch('logout')
+      router.replace({
+        name: 'Home'
+      })
+    }
+
+    return { authStatus, user, logout }
   }
 };
 </script>
