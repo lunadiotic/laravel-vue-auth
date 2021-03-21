@@ -1,19 +1,18 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <button class="btn btn-primary">Button</button>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <main class="container">
+    <div class="starter-template text-center py-5 px-3">
+      <h1>Bootstrap starter template</h1>
+      <p class="lead">
+        Use this document as a way to quickly start any new project.<br />
+        All you get is this text and a mostly barebones HTML document.
+      </p>
+    </div>
+  </main>
+  <!-- /.container -->
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  name: "Home",
+};
 </script>
