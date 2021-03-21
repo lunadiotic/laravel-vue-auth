@@ -19,20 +19,20 @@
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'Home' }">Home</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="! authStatus">
             <router-link class="nav-link" :to="{ name: 'Login' }">Login</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="authStatus">
             <router-link class="nav-link" :to="{ name: 'Dashboard' }">Dashboard</router-link>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" v-if="authStatus">
             <a
               class="nav-link dropdown-toggle"
               href="#"
               id="dropdown01"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              >Dropdown</a
+              >{{ user.name }}</a
             >
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" href="#">Action</a></li>
@@ -56,7 +56,17 @@
 </template>
 
 <script>
-export default {};
+import authStore from '@/store/auth'
+import { computed } from 'vue';
+
+export default {
+  setup() {
+    const authStatus = computed(() => authStore.state.authStatus)
+    const user = computed(() => authStore.state.user)
+
+    return { authStatus, user }
+  }
+};
 </script>
 
 <style>
