@@ -20,16 +20,10 @@
             <router-link class="nav-link" :to="{ name: 'Home' }">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'Dashboard' }">Dashboard</router-link>
+            <router-link class="nav-link" :to="{ name: 'Login' }">Login</router-link>
           </li>
           <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Disabled</a
-            >
+            <router-link class="nav-link" :to="{ name: 'Dashboard' }">Dashboard</router-link>
           </li>
           <li class="nav-item dropdown">
             <a
